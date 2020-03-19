@@ -1,0 +1,21 @@
+.friend {
+    max-width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+}
+
+.friendAvatar {
+    border-radius: 50%;
+    background-color: blueviolet;
+}
+
+.friend .friendName {
+    color: #fff;
+}
+
+.friendActive .friendName {
+    color: blueviolet;
+}
