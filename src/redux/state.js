@@ -1,3 +1,8 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
+
 let store = {
     _state: {
         profilePage: {
@@ -43,10 +48,13 @@ let store = {
     getState() {
         return this._state;
     },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
     _callSubscriber() {
         console.log('this._state changed');
     },
-    addMessage() {
+    _addMessage() {
         let newMessage = {
             id: 7,
             message: this._state.dialogsPage.newMessageText,
@@ -55,11 +63,11 @@ let store = {
         this._state.dialogsPage.newMessageText = '';
         this._callSubscriber(this._state);
     },
-    updateNewMessageText(newText) {
+    _updateNewMessageText(newText) {
         this._state.dialogsPage.newMessageText = newText;
         this._callSubscriber(this._state);
     },
-    addPost() {
+    _addPost() {
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -69,12 +77,30 @@ let store = {
         this._state.profilePage.newPostText = '';
         this._callSubscriber(this._state);
     },
-    updateNewPostText(newText) {
+    _updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state);
     },
-    subscribe(observer) {
-        this._callSubscriber = observer;
+    dispatch(action) {
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
+
+        /*if (action.type === ADD_POST) { // { type: 'ADD-POST' }
+            this._addPost();
+        }
+        else if (action.type === UPDATE_NEW_POST_TEXT) { // { type: 'ADD-POST', newText }
+            this._updateNewPostText(action.newText);
+        }
+        else if (action.type === ADD_MESSAGE) {
+            this._addMessage();
+        }
+        else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._updateNewMessageText(action.newMessageText);
+        }*/
     }
 }
 
