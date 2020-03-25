@@ -1,0 +1,71 @@
+.usersPageUsers {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.users {
+    display: grid;
+    row-gap: 20px;
+    max-width: 800px;
+}
+
+.user {
+    display: grid;
+    column-gap: 10px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 100px auto;
+}
+
+.userColumn {
+
+}
+
+.userAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+}
+
+.userAvatarImage {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.userButtonFollowWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 15px 0;
+}
+
+.userInfo {
+    color: rgba(0, 0, 0, .7);
+    font-family: Helvetica, sans-serif;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.userInfoRow {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.userName {
+
+}
+
+.userAddress {
+    text-align: right;
+}
+
+.userStatus {
+    font-size: 14px;
+    margin-top: 20px;
+}
